@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace filmy.Entities
+{
+    public class ArtistMovie
+    {
+        public int MovieId
+        {
+            get;
+            set;
+        }
+
+        public Movie Movie
+        {
+            get;
+            set;
+        }
+
+        public int ArtistId
+        {
+            get; 
+            set;
+        }
+
+        public Artist Artist
+        {
+            get; 
+            set;
+        }
+
+        public static ArtistMovie Create(Artist artist, Movie movie)
+        {
+            var artistMovie = new ArtistMovie
+            {
+                ArtistId = artist.Id,  // Používáme zahraniční klíče místo navigačních vlastností
+                MovieId = movie.Id
+            };
+            return artistMovie;
+        }
+    }
+}
